@@ -11,6 +11,11 @@ const pool = new Pool({
 
 app.use(bodyParser.json());
 
+app.get('/', (req, res) => {
+    res.send('Servidor funcionando. Usa /api/survey para enviar datos.');
+});
+
+
 app.post('/api/survey', async (req, res) => {
     const { response } = req.body;
     try {
