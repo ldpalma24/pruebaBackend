@@ -17,17 +17,16 @@ app.get('/', (req, res) => {
 
 
 app.post('/api/survey', async (req, res) => {
+    console.log('Request body:', req.body); 
     const { response } = req.body;
     try {
         const result = await pool.query('INSERT INTO encuestas (response) VALUES ($1)', [response]);
         res.status(201).json({ message: 'Response saved', result });
     } catch (error) {
-        console.error('Error al guardar en la base de datos:', error);
-        res.status(500).json({ error: 'Error saving response', details: error.message });
+        console.error('Error saving response:', error);
+        res.status(500).json({ error: 'Error saving response' });
     }
 });
-
-
 
 app.listen(port, () => {
     console.log(`Server running at http://localhost:${port}`);
