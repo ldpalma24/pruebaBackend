@@ -1,3 +1,5 @@
+const apiUrl = "https://prueba-backend-roan.vercel.app/api/survey";
+
 document.getElementById('surveyForm').addEventListener('submit', function(event) {
     event.preventDefault();
     
