@@ -3,7 +3,7 @@ document.getElementById('surveyForm').addEventListener('submit', function(event)
     
     const response = document.getElementById('response').value;
 
-    fetch('https://congenial-funicular-q74v6qxxggq2qw7-3000.app.github.dev/api/survey', {
+    fetch('https://congenial-funicular-q74v6qxxggq2qw7-3000.app.github.dev', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
