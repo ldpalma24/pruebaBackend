@@ -20,8 +20,12 @@
   ],
   "routes": [
     {
+      "src": "/api/survey",
+      "dest": "/server.js"
+    },
+    {
       "src": "/(.*)",
-      "dest": "/$1"
+      "dest": "/index.html"
     }
   ]
 }
