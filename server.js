@@ -22,10 +22,11 @@ app.post('/api/survey', async (req, res) => {
         const result = await pool.query('INSERT INTO responses (response) VALUES ($1)', [response]);
         res.status(201).json({ message: 'Response saved', result });
     } catch (error) {
-        console.error(error);
+        console.error('Database error:', error);
         res.status(500).json({ error: 'Error saving response' });
     }
 });
+
 
 app.listen(port, () => {
     console.log(`Server running at http://localhost:${port}`);
