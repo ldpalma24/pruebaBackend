@@ -17,11 +17,10 @@ app.get('/', (req, res) => {
 
 
 app.post('/api/survey', async (req, res) => {
-    console.log('Request body:', req.body); 
     const { response } = req.body;
     try {
-        const result = await pool.query('INSERT INTO encuestas (response) VALUES ($1)', [response]);
-        res.status(201).json({ message: 'Response saved', result });
+        const result = await pool.query('INSERT INTO encuestas (response) VALUES ($1) RETURNING *', [response]);
+        res.status(201).json({ message: 'Response saved', response: result.rows[0] });
     } catch (error) {
         console.error('Error saving response:', error);
         res.status(500).json({ error: 'Error saving response' });
