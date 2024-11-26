@@ -20,12 +20,14 @@ app.post('/api/survey', async (req, res) => {
     const { response } = req.body;
     try {
         const result = await pool.query('INSERT INTO encuestas (response) VALUES ($1) RETURNING *', [response]);
-        res.status(201).json({ message: 'Response saved', response: result.rows[0] });
+        console.log(result);  // Verifica que el resultado esté correcto
+        res.status(201).json({ message: 'Response saved', result: result.rows });  // Asegúrate de enviar el resultado correcto
     } catch (error) {
         console.error('Error saving response:', error);
         res.status(500).json({ error: 'Error saving response' });
     }
 });
+
 
 app.listen(port, () => {
     console.log(`Server running at http://localhost:${port}`);

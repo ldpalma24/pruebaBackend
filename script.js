@@ -8,13 +8,14 @@ document.getElementById('surveyForm').addEventListener('submit', function(event)
         headers: {
             'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ response: "sí" }),  // Puedes probar con "sí" o "no"
+        body: JSON.stringify({ response }),
     })
     .then(response => response.json())
     .then(data => {
-        console.log('Success:', data);
+        console.log('Success:', data);  // Verifica la respuesta que recibes
+        alert('Response saved: ' + data.message);  // Muestra un mensaje con el resultado
     })
     .catch((error) => {
         console.error('Error:', error);
     });
-    })
+});
